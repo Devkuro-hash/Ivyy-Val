@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Be My Valentine, Ivy ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.96);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 92%;
+  max-width: 400px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+h1 { color: #1e3a8a; font-size: 22px; }
+h2 { color: #1e40af; font-size: 18px; }
+
+button {
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.yes { background: #3b82f6; color: white; }
+.no { background: #e5e7eb; }
+
+/* FLASH */
+.flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.4s ease;
+}
+
+/* GIF PAGE */
+#gifContainer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#gifContainer img {
+  width: 85%;
+  max-width: 320px;
+  border-radius: 20px;
+  animation: slowZoom 6s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.beatGlow {
+  animation: glowPulse 1.2s infinite;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(59,130,246,0.3); }
+  50% { box-shadow: 0 0 30px rgba(59,130,246,0.9); }
+  100% { box-shadow: 0 0 10px rgba(59,130,246,0.3); }
+}
+
+/* LOVE NOTE */
+#loveNote {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  overflow-y: auto;
+  padding: 30px 15px;
+  z-index: 20;
+}
+
+.noteCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.noteCard h3 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.noteCard p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #1e40af;
+}
+
+/* FINAL PAGE */
+#finalPage {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #66a6ff, #89f7fe);
+  z-index: 30;
+  text-align: center;
+  padding-top: 60px;
+}
+
+#finalPage h1 {
+  font-family: "Playfair Display", serif; /* elegant but readable */
+  font-weight: 700;
+  font-size: 48px; /* big and clear */
+  color: #ffffff;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  animation: popBig 1.2s ease forwards;
+}
+
+
+
+@keyframes popBig {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#finalPage img {
+  width: 80%;
+  max-width: 500px;
+  margin-top: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* FLOATING */
+.floating {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="flash" class="flash"></div>
+
+<div class="card" id="card">
+  <h1>Hey Ivy 💙</h1>
+  <h2 id="question">Will you be my Valentine?</h2>
+  <div id="buttons">
+    <button class="yes" onclick="yesFinal()">Yes 💖</button>
+    <button class="no" onclick="noClicked()">No 😒</button>
+  </div>
+</div>
+
+<div id="gifContainer">
+  <img src="bear2.gif">
+  <button onclick="showLoveNote()">View a special note 💌</button>
+</div>
+
+<div id="loveNote">
+  <div class="noteCard">
+     <h3>My Sweet Ivy 💙</h3>
+    <p>You have no idea how much happiness you bring into my life. Even on days when I feel unsure, just thinking about you makes everything lighter.</p>
+    <p>Your cute voice even when u whisper, your little reactions, the way you care… they stay in my mind more than you probably realize.</p>
+    <p>Sometimes I get insecure, not because I doubt you, but because I care so deeply and the thought of losing you scares me.</p>
+    <p>You make my world softer, warmer, brighter. You make me want to be better.</p>
+    <p>I don’t just like you. I choose you. Every time. And I’ll keep choosing you.</p>
+    <p>Thank you for being in my life. Thank you for being you.</p>
+    <p>Thanks for being my Valentines, my love 💙</p>
+    <button onclick="showFinal()">Close 💙</button>
+  </div>
+</div>
+
+<div id="finalPage">
+  <h1>KRIS LOVES YOU 💙</h1>
+  <img src="blue-roses.jpg">
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="her.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let noCount = 0;
+let floatInterval;
+
+const noTexts = [
+  "Are you sure? 😳",
+  "Like… really sure? 🥺",
+  "This is getting painful 😭",
+  "Last chance fr 😒",
+  "Okay nah you’re joking 😅"
+];
+
+function noClicked() {
+  noCount++;
+  document.getElementById("question").innerText =
+    noTexts[Math.min(noCount - 1, noTexts.length - 1)];
+
+  if (noCount >= noTexts.length) {
+    document.getElementById("buttons").innerHTML =
+      `<button class="yes" onclick="yesFinal()">Fine… YES 💖</button>`;
+  }
+}
+
+function yesFinal() {
+  const flash = document.getElementById("flash");
+  flash.style.opacity = "0.6";
+  setTimeout(() => flash.style.opacity = "0", 300);
+
+  document.getElementById("card").style.display = "none";
+  document.getElementById("gifContainer").style.display = "flex";
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0;
+
+  const playPromise = music.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      let fade = setInterval(() => {
+        if (music.volume < 0.5) music.volume += 0.02;
+        else clearInterval(fade);
+      }, 200);
+    }).catch(err => {
+      console.log("Music blocked:", err);
+    });
+  }
+
+  setTimeout(() => {
+    document.querySelector("#gifContainer img").classList.add("beatGlow");
+  }, 4000);
+
+  startFloating();
+}
+
+function showLoveNote() {
+  document.getElementById("gifContainer").style.display = "none";
+  document.getElementById("loveNote").style.display = "block";
+}
+
+function showFinal() {
+  document.getElementById("loveNote").style.display = "none";
+  document.getElementById("finalPage").style.display = "block";
+}
+
+function startFloating() {
+  floatInterval = setInterval(() => {
+    const el = document.createElement("div");
+    el.className = "floating";
+    el.innerText = Math.random() > 0.5 ? "💖" : "✨";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 7000);
+  }, 350);
+}
+</script>
+
+</body>
+</html>

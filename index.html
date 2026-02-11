@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Be My Valentine, Ivy ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+
 
 <style>
 * { box-sizing: border-box; }
@@ -19,39 +23,17 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
-}
-
-/* Magical animated gradient background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(270deg, #89f7fe, #66a6ff, #f0faff);
-  background-size: 600% 600%;
-  animation: gradientMove 20s ease infinite;
-  z-index: -1;
-}
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* CARD */
 .card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,245,255,0.95));
-  padding: 30px;
-  border-radius: 25px;
+  background: rgba(255,255,255,0.96);
+  padding: 25px;
+  border-radius: 20px;
   text-align: center;
   width: 92%;
   max-width: 400px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 -5px 20px rgba(255,255,255,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 h1 { color: #1e3a8a; font-size: 22px; }
@@ -64,16 +46,10 @@ button {
   border: none;
   cursor: pointer;
   margin: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
 }
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 5px 20px rgba(59,130,246,0.4);
-}
+
 .yes { background: #3b82f6; color: white; }
-.yes:hover { background: #2563eb; }
 .no { background: #e5e7eb; }
-.no:hover { background: #d1d5db; }
 
 /* FLASH */
 .flash {
@@ -105,6 +81,7 @@ button:hover {
   border-radius: 20px;
   animation: slowZoom 6s ease-in-out infinite alternate;
 }
+
 @keyframes slowZoom {
   from { transform: scale(1); }
   to { transform: scale(1.08); }
@@ -113,6 +90,7 @@ button:hover {
 .beatGlow {
   animation: glowPulse 1.2s infinite;
 }
+
 @keyframes glowPulse {
   0% { box-shadow: 0 0 10px rgba(59,130,246,0.3); }
   50% { box-shadow: 0 0 30px rgba(59,130,246,0.9); }
@@ -131,18 +109,13 @@ button:hover {
 }
 
 .noteCard {
-  background: rgba(255,255,255,0.97);
-  border-radius: 25px;
-  padding: 35px 25px;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
   max-width: 600px;
   margin: auto;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
   text-align: center;
-  animation: popNote 0.6s ease forwards;
-}
-@keyframes popNote {
-  0% { transform: translateY(50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
 }
 
 .noteCard h3 {
@@ -152,22 +125,10 @@ button:hover {
 }
 
 .noteCard p {
-  font-size: 18px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 1.8;
   color: #1e40af;
-  margin-bottom: 16px;
 }
-
-/* Typewriter effect for love note */
-.typewriter p {
-  display: inline-block;
-  overflow: hidden;
-  border-right: .1em solid #1e40af;
-  white-space: nowrap;
-  animation: typing 3s steps(40, end), blink-caret .7s step-end infinite;
-}
-@keyframes typing { from { width: 0; } to { width: 100%; } }
-@keyframes blink-caret { 50% { border-color: transparent; } }
 
 /* FINAL PAGE */
 #finalPage {
@@ -181,17 +142,21 @@ button:hover {
 }
 
 #finalPage h1 {
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", serif; /* elegant but readable */
   font-weight: 700;
-  font-size: 50px;
+  font-size: 48px; /* big and clear */
   color: #ffffff;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  text-shadow: 0 6px 20px rgba(0,0,0,0.5);
   letter-spacing: 2px;
-  animation: popBig 1.2s ease forwards, colorPulse 2s infinite alternate, heartbeat 1.5s infinite;
+  animation: popBig 1.2s ease forwards;
 }
-@keyframes popBig { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes colorPulse { 0% { color: #ffffff; } 50% { color: #dbeafe; } 100% { color: #ffffff; } }
-@keyframes heartbeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+
+
+@keyframes popBig {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
 #finalPage img {
   width: 80%;
@@ -201,37 +166,26 @@ button:hover {
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   animation: fadeIn 2s ease forwards;
 }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* FLOATING EMOJIS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* FLOATING */
 .floating {
   position: fixed;
   bottom: -30px;
   font-size: 20px;
   animation: floatUp linear forwards;
-  pointer-events: none;
-  opacity: 0.9;
-  transform: rotate(0deg);
-}
-@keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-  50% { transform: translateY(-50vh) rotate(45deg); }
-  100% { transform: translateY(-120vh) rotate(90deg); opacity: 0; }
 }
 
-/* CONFETTI PIECES */
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background-color: red;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.9;
-  border-radius: 50%;
-  animation: confettiFall linear forwards;
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
 }
-@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(120vh) rotate(360deg); opacity:0; } }
 </style>
 </head>
 <body>
@@ -253,7 +207,7 @@ button:hover {
 </div>
 
 <div id="loveNote">
-  <div class="noteCard typewriter">
+  <div class="noteCard">
      <h3>My Sweet Ivy 💙</h3>
     <p>You have no idea how much happiness you bring into my life. Even on days when I feel unsure, just thinking about you makes everything lighter.</p>
     <p>Your cute voice even when u whisper, your little reactions, the way you care… they stay in my mind more than you probably realize.</p>
@@ -279,7 +233,6 @@ button:hover {
 let noCount = 0;
 let floatInterval;
 
-// NO button messages
 const noTexts = [
   "Are you sure? 😳",
   "Like… really sure? 🥺",
@@ -327,22 +280,18 @@ function yesFinal() {
   }, 4000);
 
   startFloating();
-  spawnConfetti(100); // confetti burst
 }
 
-// Show love note
 function showLoveNote() {
   document.getElementById("gifContainer").style.display = "none";
   document.getElementById("loveNote").style.display = "block";
 }
 
-// Show final page
 function showFinal() {
   document.getElementById("loveNote").style.display = "none";
   document.getElementById("finalPage").style.display = "block";
 }
 
-// Floating hearts/sparkles
 function startFloating() {
   floatInterval = setInterval(() => {
     const el = document.createElement("div");
@@ -350,26 +299,9 @@ function startFloating() {
     el.innerText = Math.random() > 0.5 ? "💖" : "✨";
     el.style.left = Math.random() * 100 + "vw";
     el.style.animationDuration = (4 + Math.random() * 3) + "s";
-    el.style.fontSize = (15 + Math.random() * 20) + "px";
-    el.style.transform = `rotate(${Math.random()*360}deg)`;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 7000);
   }, 350);
-}
-
-// Confetti effect
-function spawnConfetti(amount){
-  for(let i=0;i<amount;i++){
-    const c = document.createElement("div");
-    c.className = "confetti";
-    c.style.left = Math.random()*100 + "vw";
-    c.style.backgroundColor = `hsl(${Math.random()*360},80%,60%)`;
-    c.style.width = 5 + Math.random()*5 + "px";
-    c.style.height = c.style.width;
-    c.style.animationDuration = (2+Math.random()*2) + "s";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
-  }
 }
 </script>
 
